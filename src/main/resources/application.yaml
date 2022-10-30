@@ -1,0 +1,16 @@
+# testdb url is jdbc:h2:mem:testdb
+spring:
+  h2:
+    console:
+      enabled: false
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+server:
+  error:
+    include-message: always
+
+logging:
+  level:
+    com.baywa.power: DEBUG
