@@ -23,21 +23,21 @@ The application uses Java 11 and Spring Boot 2.7.5.
 The `powerProduced.json` is loaded into H2 database using GSON. (Please find the details in ```TestData.java```)
 
 To test the application easily, Swagger endpoints have been activated.
-Please navigate to ```localhost:8080``` to use the application. 
+Please navigate to `localhost:8080` to use the application. 
 Alternatively, you can also use Postman, Advanced Rest Controller or other API management platforms as well.
 
 ## Assumptions made
 
 * Since the ID seems to be custom format, the assumption is that this ID is being sent along with other data.
-* The Windpark stations are mapped as ENUM for now. If they have other details, it should be converted to a separate object.
-* The Period field is assumed to be a String. Since the challenge doesn't involve any processing related to Period, it is stored as is.
-If this field requires further processing, it can be changed to a suitable type like TemporalAmount.
+* The `Windpark stations` are mapped as ENUM for now. If they have other details, it should be converted to a separate object.
+* The `Period` field is assumed to be a String. Since the challenge doesn't involve any processing related to Period, it is stored as is.
+If this field requires further processing, it can be changed to a suitable type like `TemporalAmount`.
 
 ## Design considerations
-* The Created and Updated dates are handled by JPA using the annotation @CreatedData and @LastModifiedDate.
+* The Created and Updated dates are handled by JPA using the annotation `@CreatedData` and `@LastModifiedDate`.
 The assumption here is that these dates correspond to the values when the data is created and updated by the application in the database.
 So, if some data point is corrected, then this updatedOn field is updated. This also means that the createdOn and updatedOn sent with the JSON is not considered.
 * To identify exceptions properly, a custom error handler has been written. It can be extended with more exceptions in the future.
-  * NoSuchElementExcception is mapped to 404 (Not Found) error.
-  * IllegalArgumentException is mapped to 400 (Bad Request) error.
-  * All other exceptions are mapped to 500 (Internal Server) error.
+  * `NoSuchElementExcception` is mapped to `404` (Not Found) error.
+  * `IllegalArgumentException` is mapped to `400` (Bad Request) error.
+  * All other exceptions are mapped to `500` (Internal Server) error.
